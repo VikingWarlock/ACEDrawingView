@@ -454,8 +454,42 @@ CGPoint midPoint(CGPoint p1, CGPoint p2)
 
 @end
 
+
+@interface VKDrawingImageTool ()
+{
+    CGRect s;
+}
+@property (nonatomic,assign) CGRect size;
+
+@end
+
 @implementation VKDrawingImageTool
 
+@synthesize lineColor = _lineColor;
+@synthesize lineAlpha = _lineAlpha;
+@synthesize lineWidth = _lineWidth;
+@synthesize image = _image;
+
+- (void)setInitialPoint:(CGPoint)firstPoint
+{
+//    self.firstPoint = firstPoint;
+}
+
+- (void)moveFromPoint:(CGPoint)startPoint toPoint:(CGPoint)endPoint
+{
+    s=CGRectMake(0, 0, endPoint.x-startPoint.x, endPoint.y-startPoint.y);
+}
+
+-(CGRect)size
+{
+    return s;
+}
+
+-(void)draw
+{
+    CGContextRef ctx=UIGraphicsGetCurrentContext();
+    CGContextDrawImage(ctx, self.size, self.image.CGImage);
+}
 
 
 @end
