@@ -214,7 +214,12 @@
         {
             return ACE_AUTORELEASE([ACEDrawingTextTool new]);
         }
-
+        
+        case VKDrawingToolTypeImage:
+        {
+            return ACE_AUTORELEASE([VKDrawingImageTool new]);
+        }
+        
         case ACEDrawingToolTypeMultilineText:
         {
             return ACE_AUTORELEASE([ACEDrawingMultilineTextTool new]);
@@ -639,6 +644,20 @@
     [super dealloc];
 #endif
 }
+
+-(void)renderImage:(UIImage *)img
+{
+    self.drawTool=VKDrawingToolTypeImage;
+    self.currentTool=[self toolWithCurrentSettings];
+    ((VKDrawingImageTool*)self.currentTool).image=img;
+    [self.pathArray addObject:self.currentTool];
+    [self.currentTool setInitialPoint:CGPointMake(0, 0)];
+    [self.currentTool moveFromPoint:CGPointMake(0, 0) toPoint:CGPointMake(self.frame.size.width, self.frame.size.height)];
+    [self setNeedsDisplay];
+    [self finishDrawing];
+    self.drawTool=ACEDrawingToolTypePen;
+}
+
 
 
 @end

@@ -453,3 +453,9 @@ CGPoint midPoint(CGPoint p1, CGPoint p2)
 }
 
 @end
+
+@implementation VKDrawingImageTool
+
+
+
+@end

@@ -39,6 +39,7 @@ typedef enum {
     ACEDrawingToolTypeText,
     ACEDrawingToolTypeMultilineText,
     ACEDrawingToolTypeCustom,
+    VKDrawingToolTypeImage,
 } ACEDrawingToolType;
 
 typedef NS_ENUM(NSUInteger, ACEDrawingMode) {
@@ -78,6 +79,8 @@ typedef NS_ENUM(NSUInteger, ACEDrawingMode) {
 
 - (BOOL)canRedo;
 - (void)redoLatestStep;
+
+- (void)renderImage:(UIImage *)img;
 
 /**
  @discussion Discards the tool stack and renders them to prev_image, making the current state the 'start' state.

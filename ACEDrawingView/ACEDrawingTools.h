@@ -102,3 +102,8 @@
 
 @interface ACEDrawingArrowTool : NSObject<ACEDrawingTool>
 @end
+
+#pragma mark -
+@interface VKDrawingImageTool : NSObject<ACEDrawingTool>
+@property (nonatomic,strong) UIImage *image;
+@end
