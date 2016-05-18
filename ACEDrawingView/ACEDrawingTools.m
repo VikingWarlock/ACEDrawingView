@@ -488,7 +488,8 @@ CGPoint midPoint(CGPoint p1, CGPoint p2)
 -(void)draw
 {
     CGContextRef ctx=UIGraphicsGetCurrentContext();
-    CGContextDrawImage(ctx, self.size, self.image.CGImage);
+    [self.image drawInRect:self.size];
+//    CGContextDrawImage(ctx, self.size, self.image.CGImage);
 }
 
 
